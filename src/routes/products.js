@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import * as controller from '../controllers/products.js';
 
-'../validators/products.validator.js';
 const router = Router();
 router.get('/', controller.list);
 router.get('/:id', controller.getById);
