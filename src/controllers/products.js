@@ -3,7 +3,7 @@ import pool from '../db.js';
 
 export async function list(req, res, next) {
     try {
-        const v = validate(req, res); if (v) return;
+        // const v = validate(req, res); if (v) return;
         const page = Math.max(1, Number(req.query.page || 1));
         const limit = Math.min(100, Math.max(1, Number(req.query.limit ||
             10)));
