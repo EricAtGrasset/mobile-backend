@@ -9,6 +9,9 @@ import filesRouter from './routes/files.js';
 dotenv.config();
 const app = express();
 
+app.use(express.json());
+
+
 app.use(cors({ origin: (o, cb) => cb(null, true), credentials: true }));
 app.get('/health', (req, res) => res.json({ status: 'ok', ts: new Date().toISOString()}));
 app.use('/api/products', productsRouter);

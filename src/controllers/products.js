@@ -49,9 +49,9 @@ export async function getById(req, res, next) {
 }
 export async function create(req, res, next) {
     try {
-        const v = validate(req, res); if (v) return;
-        const { name, description, price, stock, sku, category_id, image_url
-        } = req.body;
+        // const v = validate(req, res); if (v) return;
+
+        const { name, description, price, stock, sku, category_id, image_url  } = req?.body;
         const [result] = await pool.query(
             `INSERT INTO products
                 (name,description,price,stock,sku,category_id,image_url)
@@ -72,8 +72,7 @@ export async function update(req, res, next) {
     try {
         const v = validate(req, res); if (v) return;
         const id = Number(req.params.id);
-        const { name, description, price, stock, sku, category_id, image_url
-        } = req.body;
+        const { name, description, price, stock, sku, category_id, image_url } = req.body;
         const [[exists]] = await pool.query('SELECT id FROM products WHERE id = :id', { id });
         if (!exists) return res.status(404).json({ message: 'Product not found' });
         await pool.query(
